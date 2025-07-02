@@ -3,9 +3,17 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Run JavaFX App (via Maven)",
+      "name": "Run JavaFX App (sans debug)",
       "request": "launch",
-      "mainClass": "com.example.App",  
+      "mainClass": "com.example.App",
+      "preLaunchTask": "maven javafx:run",
+      "noDebug": true
+    },
+    {
+      "type": "java",
+      "name": "Run JavaFX App (avec debug)",
+      "request": "launch",
+      "mainClass": "com.example.App",
       "preLaunchTask": "maven javafx:run"
     }
   ]
