@@ -1,2 +1,7 @@
+com\example\model\Model.class
+com\example\controller\LoginController.class
+com\example\utils\SceneManager.class
 com\example\App.class
+com\example\controller\DashboardController.class
+com\example\model\Student.class
 com\example\DAO\Database.class

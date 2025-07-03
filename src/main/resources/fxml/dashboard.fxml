@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 
-<VBox spacing="20" alignment="CENTER"
-      xmlns="http://javafx.com/javafx"
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.controller.DashboardController">
+      fx:controller="com.example.controller.DashboardController"
+      spacing="15" style="-fx-padding: 20;">
 
-    <Label text="Bienvenue sur le tableau de bord !" />
-    <Button fx:id="logoutButton" text="Se déconnecter" />
+    <!-- Recherche + actions -->
+    <HBox spacing="40" alignment="TOP_LEFT">
+        
+        <VBox spacing="10">
+            <HBox spacing="10">
+                <TextField fx:id="searchField" promptText="Rechercher..." />
+                <ComboBox fx:id="searchTypeComboBox" />
+            </HBox>
+            <HBox spacing="10">
+                <Button fx:id="profileButton" text="Aller vers profil étudiant" />
+                <Button fx:id="chartButton" text="Aller vers graphique" />
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" alignment="TOP_CENTER">
+            <HBox spacing="10">
+                <Button fx:id="importButton" text="Import" />
+                <Button fx:id="exportButton" text="Export" />
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="prevPageButton" text="←" />
+                <Button fx:id="nextPageButton" text="→" />
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <!-- tableau -->
+    <TableView fx:id="studentTableView" prefHeight="400" />
+
 </VBox>
