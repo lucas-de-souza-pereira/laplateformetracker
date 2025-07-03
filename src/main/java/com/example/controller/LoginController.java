@@ -18,8 +18,11 @@ public class LoginController {
     }
 
     private void handleLogin() {
-        String user = usernameField.getText();
-        String pass = passwordField.getText();
+        // String user = usernameField.getText();
+        // String pass = passwordField.getText();
+
+        String user = "admin";
+        String pass = "admin";
 
         if (user.equals("admin") && pass.equals("admin")) {
             SceneManager.switchScene("dashboard");

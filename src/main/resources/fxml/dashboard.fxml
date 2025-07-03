@@ -17,8 +17,8 @@
                 <ComboBox fx:id="searchTypeComboBox" />
             </HBox>
             <HBox spacing="10">
-                <Button fx:id="profileButton" text="Modifier étudiant" />
-                <Button fx:id="chartButton" text="Graphique" />
+                <Button fx:id="searchButton" text="Recherche" />
+                <Button fx:id="profileButton" text="Modifier étudiant" onAction="#openEditStudentWindow" />
             </HBox>
         </VBox>
 
@@ -28,6 +28,7 @@
                 <Button fx:id="exportButton" styleClass="ImportExportButton" text="Export" />
             </HBox>
             <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button fx:id="chartButton" text="Graphique" />
                 <Button fx:id="prevPageButton" styleClass="PageButton" text="←" />
                 <Button fx:id="nextPageButton" styleClass="PageButton" text="→" />
             </HBox>
@@ -37,4 +38,15 @@
     <!-- tableau -->
     <TableView fx:id="studentTableView" prefHeight="400" />
 
+    <VBox fx:id="advancedSearchBox" alignment="CENTER" spacing="10" visible="false" managed="false">
+        <Label text="Recherche avancée :" />
+        <TextField fx:id="minAgeField" promptText="Âge minimum" />
+        <TextField fx:id="maxAgeField" promptText="Âge maximum" />
+        <TextField fx:id="classeField" promptText="Classe exacte" />
+        <TextField fx:id="minAverageField" promptText="Moyenne minimum" />
+        <TextField fx:id="maxAverageField" promptText="Moyenne maximum" />
+        <Button fx:id="searchAdvancedButton"  text="Recherche avancée" />
+    </VBox>
+
 </VBox>
+
