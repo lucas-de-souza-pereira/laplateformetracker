@@ -14,9 +14,9 @@ public class Student {
         this.age = age;
         this.classe = classe;
         this.moyenne = moyenne;
-    }
+    }   
 
-    // Getters nécessaires pour TableView
+    // temporaire à configurer avec la DDB
     public String getPrenom() { return prenom; }
     public String getNom() { return nom; }
     public int getAge() { return age; }

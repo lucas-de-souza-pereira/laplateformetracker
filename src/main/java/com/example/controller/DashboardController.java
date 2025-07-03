@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.model.Student;
 import com.example.utils.SceneManager;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -24,7 +25,7 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
-        // Définir les colonnes
+
         TableColumn<Student, String> prenomCol = new TableColumn<>("Prénom");
         prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
 
@@ -42,9 +43,7 @@ public class DashboardController {
 
         studentTableView.getColumns().addAll(prenomCol, nomCol, ageCol, classeCol, moyenneCol);
 
-        
-
-        // Données fictives (mock)
+        // temporaire en attendant la DDB
         ObservableList<Student> data = FXCollections.observableArrayList(
             new Student("Lucas", "Dupont", 20, "L3", 14.5),
             new Student("Marie", "Durand", 22, "M1", 15.8),
@@ -52,7 +51,7 @@ public class DashboardController {
         );
 
         studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        
+
         studentTableView.setItems(data);
     }
 }
