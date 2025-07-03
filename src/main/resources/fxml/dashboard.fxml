@@ -18,7 +18,7 @@
             </HBox>
             <HBox spacing="10">
                 <Button fx:id="searchButton" text="Recherche" />
-                <Button fx:id="profileButton" text="Modifier étudiant" onAction="#openEditStudentWindow" />
+                <Button fx:id="editButton" text="Modifier étudiant" onAction="#openEditStudentWindow" />
             </HBox>
         </VBox>
 

@@ -9,7 +9,7 @@ public class App extends Application {
     public void start(Stage stage) {
         SceneManager.setStage(stage);
         SceneManager.switchScene("login");
-        stage.setTitle("Mon Application JavaFX");
+        stage.setTitle("LaPlateforme Tracker");
         stage.show();
     }
 

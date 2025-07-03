@@ -48,7 +48,7 @@ public class DashboardController {
             advancedSearchBox.setVisible(isAdvanced);
             advancedSearchBox.setManaged(isAdvanced);
 
-               if (!isAdvanced) {
+            if (!isAdvanced) {
                 minAgeField.clear();
                 maxAgeField.clear();
                 classeField.clear();
@@ -56,6 +56,9 @@ public class DashboardController {
                 maxAverageField.clear();
     }
         });
+
+        TableColumn<Student, Integer> idCol = new TableColumn<>("ID");
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         TableColumn<Student, String> prenomCol = new TableColumn<>("Prénom");
         prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
@@ -72,13 +75,13 @@ public class DashboardController {
         TableColumn<Student, Double> moyenneCol = new TableColumn<>("Moyenne");
         moyenneCol.setCellValueFactory(new PropertyValueFactory<>("moyenne"));
 
-        studentTableView.getColumns().addAll(prenomCol, nomCol, ageCol, classeCol, moyenneCol);
+        studentTableView.getColumns().addAll(idCol, prenomCol, nomCol, ageCol, classeCol, moyenneCol);
 
         // temporaire en attendant la DDB / pas oublier l'ID du student
         ObservableList<Student> data = FXCollections.observableArrayList(
-            new Student("Lucas", "Dupont", 20, "L3", 14.5),
-            new Student("Marie", "Durand", 22, "M1", 15.8),
-            new Student("Sami", "Ben Ali", 19, "L2", 13.2)
+            new Student(1,"Lucas", "Dupont", 20, "L3", 14.5),
+            new Student(2,"Marie", "Durand", 22, "M1", 15.8),
+            new Student(3,"Sami", "Ben Ali", 19, "L2", 13.2)
         );
 
         studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
