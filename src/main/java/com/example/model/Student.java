@@ -1,4 +1,3 @@
-
 package com.example.model;
 
 public class Student {
@@ -16,7 +15,7 @@ public class Student {
         this.moyenne = moyenne;
     }
 
-    // Getters nécessaires pour TableView
+    // Getters obligatoires pour JavaFX
     public String getPrenom() { return prenom; }
     public String getNom() { return nom; }
     public int getAge() { return age; }

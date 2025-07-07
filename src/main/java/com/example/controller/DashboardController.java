@@ -13,6 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import com.example.DAO.StudentDAO;
+
 public class DashboardController {
 
     @FXML private Button logoutButton;
@@ -41,16 +43,18 @@ public class DashboardController {
         moyenneCol.setCellValueFactory(new PropertyValueFactory<>("moyenne"));
 
         studentTableView.getColumns().addAll(prenomCol, nomCol, ageCol, classeCol, moyenneCol);
+        studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         
 
         // Données fictives (mock)
-        ObservableList<Student> data = FXCollections.observableArrayList(
-            new Student("Lucas", "Dupont", 20, "L3", 14.5),
-            new Student("Marie", "Durand", 22, "M1", 15.8),
-            new Student("Sami", "Ben Ali", 19, "L2", 13.2)
-        );
+        // ObservableList<Student> data = FXCollections.observableArrayList(
+        //     new Student("Lucas", "Dupont", 20, "L3", 14.5),
+        //     new Student("Marie", "Durand", 22, "M1", 15.8),
+        //     new Student("Sami", "Ben Ali", 19, "L2", 13.2)
+        // );
 
+        ObservableList<Student> data = FXCollections.observableArrayList(StudentDAO.getAllStudents());
         studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         studentTableView.setItems(data);
