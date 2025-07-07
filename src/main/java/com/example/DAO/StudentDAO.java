@@ -19,6 +19,7 @@ public class StudentDAO {
 
             while (rs.next()) {
                 Student s = new Student(
+                    rs.getInt("id"),
                     rs.getString("first_name"),
                     rs.getString("last_name"),
                     rs.getInt("age"),
