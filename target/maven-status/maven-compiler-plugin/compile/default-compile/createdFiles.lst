@@ -1,3 +1,4 @@
+com\example\DAO\StudentDAO.class
 com\example\model\Model.class
 com\example\controller\LoginController.class
 com\example\utils\SceneManager.class

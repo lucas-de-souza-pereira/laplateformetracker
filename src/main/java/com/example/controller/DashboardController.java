@@ -20,6 +20,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import com.example.DAO.StudentDAO;
+
 public class DashboardController {
 
     @FXML private Button logoutButton;
@@ -75,15 +77,21 @@ public class DashboardController {
         TableColumn<Student, Double> moyenneCol = new TableColumn<>("Moyenne");
         moyenneCol.setCellValueFactory(new PropertyValueFactory<>("moyenne"));
 
-        studentTableView.getColumns().addAll(idCol, prenomCol, nomCol, ageCol, classeCol, moyenneCol);
+        studentTableView.getColumns().addAll(prenomCol, nomCol, ageCol, classeCol, moyenneCol);
+        studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        // temporaire en attendant la DDB / pas oublier l'ID du student
-        ObservableList<Student> data = FXCollections.observableArrayList(
-            new Student(1,"Lucas", "Dupont", 20, "L3", 14.5),
-            new Student(2,"Marie", "Durand", 22, "M1", 15.8),
-            new Student(3,"Sami", "Ben Ali", 19, "L2", 13.2)
-        );
+        
 
+        // Données fictives (mock)
+        // ObservableList<Student> data = FXCollections.observableArrayList(
+        //     new Student("Lucas", "Dupont", 20, "L3", 14.5),
+        //     new Student("Marie", "Durand", 22, "M1", 15.8),
+        //     new Student("Sami", "Ben Ali", 19, "L2", 13.2)
+        // );
+
+        ObservableList<Student> data = FXCollections.observableArrayList(StudentDAO.getAllStudents());
+        studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        
         studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 
         studentTableView.setItems(data);

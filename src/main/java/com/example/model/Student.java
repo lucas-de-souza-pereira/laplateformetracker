@@ -1,4 +1,3 @@
-
 package com.example.model;
 
 public class Student {
@@ -18,8 +17,7 @@ public class Student {
         this.moyenne = moyenne;
     }   
 
-    // temporaire à configurer avec la DDB 
-    public int getId() { return id; }
+    // Getters obligatoires pour JavaFX
     public String getPrenom() { return prenom; }
     public String getNom() { return nom; }
     public int getAge() { return age; }
