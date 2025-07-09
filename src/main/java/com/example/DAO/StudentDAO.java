@@ -11,7 +11,7 @@ public class StudentDAO {
     public static List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
 
-        String query = "SELECT * FROM students";
+        String query = "SELECT * FROM students ORDER BY id";
 
         try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -62,5 +62,47 @@ public class StudentDAO {
             }
     }
 
+
+public static List<Student> searchStudents(String field, String keyword) {
+    List<Student> students = new ArrayList<>();
+    String sql;
+
+    if (field.equals("id") || field.equals("age")) {
+        sql = "SELECT * FROM students WHERE " + field + " = ?";
+    } else {
+        sql = "SELECT * FROM students WHERE " + field + " ILIKE ?";
+    }
+
+    try (Connection conn = Database.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        if (field.equals("id") || field.equals("age")) {
+            stmt.setInt(1, Integer.parseInt(keyword));
+        } else {
+            stmt.setString(1, "%" + keyword + "%");
+        }
+
+        try (ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                students.add(new Student(
+                        rs.getInt("id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getInt("age"),
+                        rs.getString("class"),
+                        rs.getDouble("average")
+                ));
+            }
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return students;
+}
+
+
+    
 
 }

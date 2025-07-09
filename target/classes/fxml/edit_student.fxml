@@ -9,10 +9,10 @@
       spacing="10" style="-fx-padding: 20;">
 
     <Label text="Modifier un étudiant" />
-    <TextField fx:id="prenomField" promptText="Prénom" />
-    <TextField fx:id="nomField" promptText="Nom" />
-    <TextField fx:id="classeField" promptText="Classe" />
+    <TextField fx:id="firstNameField" promptText="Prénom" />
+    <TextField fx:id="lastNameField" promptText="Nom" />
+    <TextField fx:id="classField" promptText="Classe" />
     <TextField fx:id="ageField" promptText="Âge" />
-    <TextField fx:id="moyenneField" promptText="Moyenne" />
-    <Button text="Valider" onAction="#handleValidate" />
+    <TextField fx:id="averageField" promptText="Moyenne" />
+    <Button text="Valider"  onAction="#handleValidateUpdate" />
 </VBox>

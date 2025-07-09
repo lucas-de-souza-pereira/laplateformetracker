@@ -20,6 +20,7 @@ public class AddStudentController {
         this.onStudentAdded = callback;
     }
 
+    
         @FXML
     private void handleAddStudent() {   
         try {
