@@ -52,7 +52,7 @@
         <TextField fx:id="classeField" promptText="Classe exacte" />
         <TextField fx:id="minAverageField" promptText="Moyenne minimum" />
         <TextField fx:id="maxAverageField" promptText="Moyenne maximum" />
-        <Button fx:id="searchAdvancedButton"  text="Recherche avancée" />
+        <Button fx:id="searchAdvancedButton"  text="Recherche avancée" onAction="#handleAdvancedSearch"/>
     </VBox>
 
 </VBox>

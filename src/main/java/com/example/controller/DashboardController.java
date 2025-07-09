@@ -236,6 +236,24 @@ private void handleSearch() {
     }
 }
 
+@FXML
+private void handleAdvancedSearch() {
+    try {
+        Integer minAge = minAgeField.getText().isEmpty() ? null : Integer.parseInt(minAgeField.getText());
+        Integer maxAge = maxAgeField.getText().isEmpty() ? null : Integer.parseInt(maxAgeField.getText());
+        String classe = classeField.getText().trim().isEmpty() ? null : classeField.getText().trim();
+        Double minAvg = minAverageField.getText().isEmpty() ? null : Double.parseDouble(minAverageField.getText());
+        Double maxAvg = maxAverageField.getText().isEmpty() ? null : Double.parseDouble(maxAverageField.getText());
+
+        allStudents = StudentDAO.searchAdvancedStudents(minAge, maxAge, classe, minAvg, maxAvg);
+        currentPage = 0;
+        updateTable();
+
+    } catch (NumberFormatException e) {
+        System.out.println("Erreur dans la saisie des nombres.");
+    }
+}
+
 
 
 }

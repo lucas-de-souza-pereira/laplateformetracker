@@ -102,6 +102,49 @@ public static List<Student> searchStudents(String field, String keyword) {
     return students;
 }
 
+    public static List<Student> searchAdvancedStudents(Integer minAge, Integer maxAge, String classe, Double minAverage, Double maxAverage) {
+        List<Student> students = new ArrayList<>();
+
+        StringBuilder sql = new StringBuilder("SELECT * FROM students WHERE 1=1");
+
+        if (minAge != null) sql.append(" AND age >= ?");
+        if (maxAge != null) sql.append(" AND age <= ?");
+        if (classe != null && !classe.isEmpty()) sql.append(" AND class ILIKE ?");
+        if (minAverage != null) sql.append(" AND average >= ?");
+        if (maxAverage != null) sql.append(" AND average <= ?");
+        sql.append(" ORDER BY id");
+
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+
+            int index = 1;
+
+            if (minAge != null) stmt.setInt(index++, minAge);
+            if (maxAge != null) stmt.setInt(index++, maxAge);
+            if (classe != null && !classe.isEmpty()) stmt.setString(index++, classe);
+            if (minAverage != null) stmt.setDouble(index++, minAverage);
+            if (maxAverage != null) stmt.setDouble(index++, maxAverage);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                students.add(new Student(
+                    rs.getInt("id"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getInt("age"),
+                    rs.getString("class"),
+                    rs.getDouble("average")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return students;
+    }
+
 
     
 
