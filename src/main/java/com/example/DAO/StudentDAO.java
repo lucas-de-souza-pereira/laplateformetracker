@@ -11,7 +11,7 @@ public class StudentDAO {
     public static List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
 
-        String query = "SELECT * FROM student";
+        String query = "SELECT * FROM students";
 
         try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -24,7 +24,9 @@ public class StudentDAO {
                     rs.getString("last_name"),
                     rs.getInt("age"),
                     rs.getString("class"),
-                    rs.getDouble("grade")
+                    rs.getDouble("average")
+                    
+
                 );
                 students.add(s);
             }
@@ -35,4 +37,30 @@ public class StudentDAO {
 
         return students;
     }
+
+    public boolean addStudent(Student student){
+
+        String psql =   "INSERT INTO students " +
+                        "(first_name , last_name , age , class , average)" +
+                        "VALUES (? , ? , ? , ? , ?)";
+
+        try (Connection conn = Database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(psql)) {
+
+                stmt.setString(1, student.getFirstName());
+                stmt.setString(2, student.getLastName());
+                stmt.setInt(3, student.getAge());
+                stmt.setString(4, student.getClasse());
+                stmt.setDouble(5, student.getAverage());
+
+                stmt.executeUpdate();
+                return true;
+                }
+        catch (SQLException e){
+            e.printStackTrace();
+            return false;
+            }
+    }
+
+
 }

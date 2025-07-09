@@ -2,25 +2,75 @@ package com.example.model;
 
 public class Student {
     private int id;
-    private String prenom;
-    private String nom;
+    private String firstName;
+    private String lastName;
     private int age;
     private String classe;
-    private double moyenne;
+    private double average;
 
-    public Student(int id, String prenom, String nom, int age, String classe, double moyenne) {
+    public Student(int id, String firstName, String lastName, int age, String classe, double average) {
         this.id = id;
-        this.prenom = prenom;
-        this.nom = nom;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.classe = classe;
-        this.moyenne = moyenne;
-    }   
+        this.average = average;
+    }
 
-    // Getters obligatoires pour JavaFX
-    public String getPrenom() { return prenom; }
-    public String getNom() { return nom; }
-    public int getAge() { return age; }
-    public String getClasse() { return classe; }
-    public double getMoyenne() { return moyenne; }
+    public Student(String firstName, String lastName, int age, String classe, double average) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.classe = classe;
+        this.average = average;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
+    public double getAverage() {
+        return average;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
+    }
 }

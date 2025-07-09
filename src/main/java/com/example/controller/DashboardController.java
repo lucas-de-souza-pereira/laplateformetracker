@@ -3,24 +3,26 @@ package com.example.controller;
 import com.example.model.Student;
 import com.example.utils.SceneManager;
 
+import com.example.DAO.StudentDAO;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import com.example.DAO.StudentDAO;
 
 public class DashboardController {
 
@@ -62,41 +64,35 @@ public class DashboardController {
         TableColumn<Student, Integer> idCol = new TableColumn<>("ID");
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<Student, String> prenomCol = new TableColumn<>("Prénom");
-        prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        TableColumn<Student, String> fristNameCol = new TableColumn<>("Prénom");
+        fristNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 
-        TableColumn<Student, String> nomCol = new TableColumn<>("Nom");
-        nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        TableColumn<Student, String> lastNameCol = new TableColumn<>("Nom");
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
         TableColumn<Student, Integer> ageCol = new TableColumn<>("Âge");
         ageCol.setCellValueFactory(new PropertyValueFactory<>("age"));
 
-        TableColumn<Student, String> classeCol = new TableColumn<>("Classe");
-        classeCol.setCellValueFactory(new PropertyValueFactory<>("classe"));
+        TableColumn<Student, String> classCol = new TableColumn<>("Classe");
+        classCol.setCellValueFactory(new PropertyValueFactory<>("classe"));
 
-        TableColumn<Student, Double> moyenneCol = new TableColumn<>("Moyenne");
-        moyenneCol.setCellValueFactory(new PropertyValueFactory<>("moyenne"));
+        TableColumn<Student, Double> averageCol = new TableColumn<>("Moyenne");
+        averageCol.setCellValueFactory(new PropertyValueFactory<>("average"));
 
-        studentTableView.getColumns().addAll(prenomCol, nomCol, ageCol, classeCol, moyenneCol);
-        studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-        
-
-        // Données fictives (mock)
-        // ObservableList<Student> data = FXCollections.observableArrayList(
-        //     new Student("Lucas", "Dupont", 20, "L3", 14.5),
-        //     new Student("Marie", "Durand", 22, "M1", 15.8),
-        //     new Student("Sami", "Ben Ali", 19, "L2", 13.2)
-        // );
+        studentTableView.getColumns().addAll(idCol, fristNameCol, lastNameCol, ageCol, classCol, averageCol);
 
         ObservableList<Student> data = FXCollections.observableArrayList(StudentDAO.getAllStudents());
-        studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        
+
         studentTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
 
         studentTableView.setItems(data);
     }
 
+    public void refreshTable() {
+    studentTableView.getItems().clear();
+    studentTableView.getItems().addAll(StudentDAO.getAllStudents());
+}
+    
 
     @FXML
     private void openEditStudentWindow() {
@@ -109,6 +105,29 @@ public class DashboardController {
             stage.setScene(new Scene(root, 400, 300));
             stage.initModality(Modality.APPLICATION_MODAL); 
             stage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
+
+
+    @FXML
+    private void openAddStudentWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/add_student.fxml"));
+            Parent root = loader.load();
+
+        AddStudentController controller = loader.getController();
+
+        controller.setOnStudentAdded(this::refreshTable);
+
+        Stage stage = new Stage();
+        stage.setTitle("Ajouter un étudiant");
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

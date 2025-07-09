@@ -4,11 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class EditStudentController {
-    @FXML private TextField prenomField;
-    @FXML private TextField nomField;
-    @FXML private TextField classeField;
+    @FXML private TextField firstNameField;
+    @FXML private TextField lastNameField;
+    @FXML private TextField classField;
     @FXML private TextField ageField;
-    @FXML private TextField moyenneField;
+    @FXML private TextField averageField;
 
     @FXML
     private void handleValidate() {
