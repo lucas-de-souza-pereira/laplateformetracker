@@ -23,16 +23,19 @@
             </HBox>
         </VBox>
         
-        <VBox spacing="10" alignment="BOTTOM_CENTER">
+        <VBox spacing="10" alignment="TOP_CENTER">
             <HBox spacing="10">
-                <Button fx:id="delButton" text="Supprimer étudiant" onAction="#deleteStudent"/>
+                <Button fx:id="addstudentButton" text="Ajouter étudiant" onAction="#openAddStudentWindow" />
+            </HBox>
+            <HBox>
+            <Button fx:id="delButton" text="Supprimer étudiant" onAction="#deleteStudent"/>
             </HBox>
         </VBox>
 
         <VBox spacing="10" alignment="TOP_RIGHT">
             <HBox spacing="10">
-                <Button fx:id="importButton" styleClass="ImportExportButton" text="Ajouter" onAction="#openAddStudentWindow" />
-                <Button fx:id="exportButton" styleClass="ImportExportButton" text="Exporter" />
+                <Button fx:id="importButton" styleClass="ImportExportButton" text="Importer" />
+                <Button fx:id="exportButton" styleClass="ImportExportButton" text="Exporter" onAction="#handleExportCSV" />
             </HBox>
             <HBox spacing="10" alignment="CENTER_RIGHT">
                 <Button fx:id="chartButton" text="Graphique" />

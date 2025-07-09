@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.model.Student;
 import com.example.utils.SceneManager;
 import com.example.DAO.DeleteStudentDAO;
+import com.example.DAO.ImportExportDAO;
 import com.example.DAO.StudentDAO;
 
 import javafx.fxml.FXML;
@@ -32,7 +33,7 @@ public class DashboardController {
     @FXML private Button logoutButton;
     @FXML private TextField searchField;
 
-    @FXML private Button searchButton, editButton, chartButton, importButton, exportButton, nextPageButton , prevPageButton, searchAdvancedButton, delButton;
+    @FXML private Button searchButton, editButton, chartButton, importButton, exportButton, nextPageButton , prevPageButton, searchAdvancedButton, delButton, addstudentButton;
     @FXML private TableView<Student> studentTableView;
 
     @FXML private ComboBox<String> searchTypeComboBox;
@@ -254,6 +255,11 @@ private void handleAdvancedSearch() {
     }
 }
 
+@FXML
+private void handleExportCSV() {
+    boolean success = ImportExportDAO.exportToCSV("students.csv", studentTableView.getItems());
+    System.out.println(success ? "Export réussi !" : "Échec de l'export.");
+}
 
 
 }
