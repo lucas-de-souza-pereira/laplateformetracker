@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.example.DAO.Database;
+import com.example.DAO.UserDAO;
 import com.example.utils.SceneManager;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
@@ -30,31 +31,21 @@ public class LoginController {
         loginButton.setOnAction(event -> handleLogin());
     }
 
-    @FXML
-    private void handleLogin() {
-    String username = usernameField.getText();
-    String password = passwordField.getText();
+@FXML
+private void handleLogin() {
+    String username = usernameField.getText().trim();
+    String password = passwordField.getText().trim();
 
-    try (Connection conn = Database.getConnection()) {
-        String sql = "SELECT password FROM users WHERE username = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
-            ResultSet rs = stmt.executeQuery();
+    if (username.isEmpty() || password.isEmpty()) {
+        showAlert("Veuillez remplir tous les champs.");
+        return;
+    }
 
-            if (rs.next()) {
-                String hash = rs.getString("password");
-                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), hash);
-                if (result.verified) {
-                    SceneManager.switchScene("dashboard");
-                } else {
-                    showAlert("Mot de passe incorrect.");
-                }
-            } else {
-                showAlert("Utilisateur inconnu.");
-            }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
+    boolean success = UserDAO.login(username, password);
+    if (success) {
+        SceneManager.switchScene("dashboard");
+    } else {
+        showAlert("Identifiants incorrects.");
     }
 }
 
