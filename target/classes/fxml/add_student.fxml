@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.controller.AddStudentController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <Label text="Ajouter un étudiant" />
+    <TextField fx:id="firstNameField" promptText="Prénom" />
+    <TextField fx:id="lastNameField" promptText="Nom" />
+    <TextField fx:id="ageField" promptText="Âge" />
+    <TextField fx:id="classField" promptText="Classe" />
+    <TextField fx:id="averageField" promptText="Moyenne" />
+    <Button text="Valider" onAction="#handleAddStudent" />
+</VBox>

@@ -1,0 +1,36 @@
+.label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #2c3e50;
+}
+
+
+
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-width: 150px;
+    -fx-padding: 6px 12px;
+}
+
+.ImportExportButton{
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-width: 105px;
+    -fx-padding: 6px 12px;
+}
+
+.PageButton{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-width: 40px;
+    -fx-padding: 6px 12px;
+    -fx-font-size : 10px
+}
+
+#chartButton{
+    -fx-pref-width: 120px;
+    -fx-padding-right: 5px;
+}
