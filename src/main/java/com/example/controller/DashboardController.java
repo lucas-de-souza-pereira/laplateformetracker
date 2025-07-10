@@ -202,7 +202,7 @@ private void openEditStudentWindow() {
 
     if (success) {
         System.out.println("Étudiant supprimé avec succès.");
-        updateTable(); 
+        updateTableAllStudent(); 
     } else {
         System.out.println("Erreur lors de la suppression.");
     }
@@ -257,9 +257,18 @@ private void handleAdvancedSearch() {
 
 @FXML
 private void handleExportCSV() {
-    boolean success = ImportExportDAO.exportToCSV("students.csv", studentTableView.getItems());
+    boolean success = ImportExportDAO.exportToCSV("students_export.csv", studentTableView.getItems());
     System.out.println(success ? "Export réussi !" : "Échec de l'export.");
 }
 
-
+@FXML
+private void handleImportCSV() {
+    boolean success = ImportExportDAO.importFromCSV("students_import.csv");
+    if (success) {
+        updateTableAllStudent();
+        System.out.println("Import réussi !");
+    } else {
+        System.out.println("Échec de l'import.");
+    }
+}
 }

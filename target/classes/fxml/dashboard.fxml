@@ -34,7 +34,7 @@
 
         <VBox spacing="10" alignment="TOP_RIGHT">
             <HBox spacing="10">
-                <Button fx:id="importButton" styleClass="ImportExportButton" text="Importer" />
+                <Button fx:id="importButton" styleClass="ImportExportButton" text="Importer" onAction="#handleImportCSV" />
                 <Button fx:id="exportButton" styleClass="ImportExportButton" text="Exporter" onAction="#handleExportCSV" />
             </HBox>
             <HBox spacing="10" alignment="CENTER_RIGHT">
