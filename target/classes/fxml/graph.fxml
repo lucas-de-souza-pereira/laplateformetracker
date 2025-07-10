@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.controller.GraphController"
+      spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+    
+    <BarChart fx:id="barChart" prefHeight="400" prefWidth="600">
+        <xAxis>
+            <CategoryAxis label="Classe"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Nombre d'étudiants"/>
+        </yAxis>
+    </BarChart>
+
+    <Button text="Retour" onAction="#handleReturn"/>
+</VBox>

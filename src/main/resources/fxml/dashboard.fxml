@@ -38,7 +38,7 @@
                 <Button fx:id="exportButton" styleClass="ImportExportButton" text="Exporter" onAction="#handleExportCSV" />
             </HBox>
             <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button fx:id="chartButton" text="Graphique" />
+                <Button fx:id="chartButton" text="Graphique" onAction="#openGraphWindow" />
                 <Button fx:id="prevPageButton" styleClass="PageButton" text="←" />
                 <Button fx:id="nextPageButton" styleClass="PageButton" text="→" />
             </HBox>
