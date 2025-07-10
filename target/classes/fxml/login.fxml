@@ -12,5 +12,9 @@
     <Label text="Connexion" />
     <TextField fx:id="usernameField" promptText="Nom d'utilisateur" prefHeight="40"/>
     <PasswordField fx:id="passwordField" promptText="Mot de passe" prefHeight="40"/>
-    <Button fx:id="loginButton" text="Se connecter" />
+
+    <Button fx:id="loginButton" text="Se connecter" onAction="#handleLogin" />
+
+
+    <Button text="Créer un compte" onAction="#openRegisterWindow" />
 </VBox>
